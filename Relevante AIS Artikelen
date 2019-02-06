@@ -1,0 +1,56 @@
+# Verkenning stoplocaties AIS data
+
+Met dit script identificeren we stoplocaties op zee met behulp van AIS data. 
+
+### AIS data
+
+Samenvattend bevat AIS data gegevens over de identiteit, positie, snelheid en koers van schepen. De volgende gegevens worden verzonden:
+    AIS transmitters send data every 2 to 10 seconds while underway and every 3
+    minutes while at anchor. The main AIS data field are:
+        - MMSI (Maritime Mobile Service Identity) – a series of nine digits
+          uniquely identifying ship stations;
+        - Navigation status – “at anchor”, “under way using engine(s)”, or “not
+          under command”;
+        - Rate of turn – right or left, 0 to 720 degrees per minute;
+        - Speed over ground – 0 to 102 knots with 0.1 knot resolution;
+        - Position accuracy;
+        - Longitude and Latitude – to 1/10,000 minute;
+        - Course over ground – relative to true north to 0.1 degree;
+        - True Heading – 0 to 359 degrees from gyro compass;
+        - Timestamp – Coordinated Universal Time (UTC) time accurate to nearest
+          second when this data was generated.
+     
+     Moreover, every 6 minutes the AIS transmitter sends additional fields,
+     including:
+         - IMO (International Maritime Organization) ship identification number
+         - a seven digit number that remains unchanged upon transfer of the
+           ship's registration to another Country;
+         - International radio call sign – up to seven characters, assigned to
+           the vessel by its Country of registry;
+         - Vessel Name – 20 characters to represent the name of the vessel;
+         - Type of ship/cargo;
+         - Dimensions of ship – to nearest meter;
+         - Type of positioning system – such as GPS, Differential Global
+           Positioning Systems (DGPS) or Long Range Navigation (LORAN)-C;
+         - Location of positioning system's antenna on-board the vessel;
+         - Draught of ship – 0.1 meter to 25.5 meters;
+         - Destination – max 20 characters;
+         - Estimated time of arrival (ETA) at destination – UTC date hour:
+           minute.
+
+Bron: https://www.sciencedirect.com/science/article/pii/S2405535216300201
+
+De reporting interval verhoogd als de snelheid van een schip verhoogd:
+    - Position report:
+        - 3 min: at anchor
+        - 10 sec: < 14 knopen
+        - 6 sec: < 23 knopen
+    - Standard Class B equipment position report:
+        - 3 min: < 2 knots
+        - 30 sec: < 14 knots
+        - 15 sec: < 23 knots
+
+Bron: https://www.sciencedirect.com/science/article/pii/S0308597X17305535
+
+Overige artikelen:
+https://www.sciencedirect.com/science/article/pii/S0888613X13000728
